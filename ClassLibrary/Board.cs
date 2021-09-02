@@ -89,10 +89,12 @@ namespace ChessLibrary
         public void placeBlackSide960()
         {
 
-            string[] blackRookSpaces = { "a1", "b1", "g1", "h1" };
+            string[] blackRightRookSpaces = { "a1", "b1" };
+            string[] blackLeftRookSpaces = { "g1", "h1" };
             string[] blackKingSpaces = { "c1", "d1", "e1", "f1" };
 
-            ArrayList potentialBlackRookSpaces = new ArrayList(blackRookSpaces);
+            ArrayList potentialRightBlackRookSpaces = new ArrayList(blackRightRookSpaces);
+            ArrayList potentialLeftBlackRookSpaces = new ArrayList(blackLeftRookSpaces);
             ArrayList potentialBlackKingSpaces = new ArrayList(blackKingSpaces);
             ArrayList openCells = new ArrayList();
 
@@ -100,17 +102,36 @@ namespace ChessLibrary
             int getSpace = 0;
             string space = "";
 
-            for (int i = 0; i < potentialBlackRookSpaces.Count; i++)
+            //Right Rook
+            for (int i = 0; i < potentialRightBlackRookSpaces.Count; i++)
             {
-                getSpace = rng.Next(potentialBlackRookSpaces.Count);
-                space = (string)potentialBlackRookSpaces[getSpace];
+                getSpace = rng.Next(potentialRightBlackRookSpaces.Count);
+                space = (string)potentialRightBlackRookSpaces[getSpace];
 
                 m_cells[space].piece = new Piece(Piece.PieceType.Rook, m_BlackSide);
-                potentialBlackRookSpaces.Remove(space);
+                potentialRightBlackRookSpaces.Remove(space);
+
 
             }
 
-            foreach (var openSpace in potentialBlackRookSpaces)
+            foreach (var openSpace in potentialRightBlackRookSpaces)
+            {
+                openCells.Add(openSpace);
+            }
+
+            //Left Rook
+            for (int i = 0; i < potentialLeftBlackRookSpaces.Count; i++)
+            {
+                getSpace = rng.Next(potentialLeftBlackRookSpaces.Count);
+                space = (string)potentialLeftBlackRookSpaces[getSpace];
+
+                m_cells[space].piece = new Piece(Piece.PieceType.Rook, m_BlackSide);
+                potentialLeftBlackRookSpaces.Remove(space);
+
+
+            }
+
+            foreach (var openSpace in potentialLeftBlackRookSpaces)
             {
                 openCells.Add(openSpace);
             }
@@ -163,33 +184,52 @@ namespace ChessLibrary
                 m_cells[2, col].piece = new Piece(Piece.PieceType.Pawn, m_BlackSide);
 
         }
-        
+
         public void placeWhiteSide960()
         {
             //Random rng = new Random();
 
-            string[] whiteRookSpaces = { "a8", "b8", "g8", "h8" };
+            string[] whiteRightRookSpaces = { "a8", "b8" };
+            string[] whiteLeftRookSpaces = { "g8", "h8" };
             string[] whiteKingSpaces = { "c8", "d8", "e8", "f8" };
 
-            ArrayList potentialWhiteRookSpaces = new ArrayList(whiteRookSpaces);
+            ArrayList potentialRightWhiteRookSpaces = new ArrayList(whiteRightRookSpaces);
+            ArrayList potentialLeftWhiteRookSpaces = new ArrayList(whiteLeftRookSpaces);
             ArrayList potentialWhiteKingSpaces = new ArrayList(whiteKingSpaces);
             ArrayList openCells = new ArrayList();
 
-            //if white rooks are placed add remaining spaces to openCells
+            //if rooks are placed add remaining spaces to openCells
             int getSpace = 0;
             string space = "";
 
-            for (int i = 0; i < potentialWhiteRookSpaces.Count; i++)
+            //Right Rook
+            for (int i = 0; i < potentialRightWhiteRookSpaces.Count; i++)
             {
-                getSpace = rng.Next(potentialWhiteRookSpaces.Count);
-                space = (string)potentialWhiteRookSpaces[getSpace];
+                getSpace = rng.Next(potentialRightWhiteRookSpaces.Count);
+                space = (string)potentialRightWhiteRookSpaces[getSpace];
 
                 m_cells[space].piece = new Piece(Piece.PieceType.Rook, m_WhiteSide);
-                potentialWhiteRookSpaces.Remove(space);
+                potentialRightWhiteRookSpaces.Remove(space);
 
             }
 
-            foreach (var openSpace in potentialWhiteRookSpaces)
+            foreach (var openSpace in potentialRightWhiteRookSpaces)
+            {
+                openCells.Add(openSpace);
+            }
+
+            //Left Rook
+            for (int i = 0; i < potentialLeftWhiteRookSpaces.Count; i++)
+            {
+                getSpace = rng.Next(potentialLeftWhiteRookSpaces.Count);
+                space = (string)potentialLeftWhiteRookSpaces[getSpace];
+
+                m_cells[space].piece = new Piece(Piece.PieceType.Rook, m_WhiteSide);
+                potentialLeftWhiteRookSpaces.Remove(space);
+
+            }
+
+            foreach (var openSpace in potentialLeftWhiteRookSpaces)
             {
                 openCells.Add(openSpace);
             }
