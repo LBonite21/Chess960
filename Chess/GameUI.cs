@@ -474,6 +474,17 @@ namespace Chess
 					ChessGame.WhitePlayer.PlayerType = Player.Type.Computer;	// Set the black player as computer
 				}
 
+				// Start Chess960 Human Vs. Computer Game
+				if (NewGameDlg.Players960HvC.Checked)
+				{
+					ChessGame.Chess960Reset();
+					IsRunning = true;
+					LogCounter = 0;
+
+					ChessGame.BlackPlayer.PlayerType = Player.Type.Computer;    // Set the black player as computer
+					ChessGame.WhitePlayer.PlayerType = Player.Type.Human;       // Set the white player as computer (as he has the first move)
+				}
+
 				// Beginner Player
 				if (NewGameDlg.PlayerLevel1.Checked)
 				{
