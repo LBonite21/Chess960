@@ -24,19 +24,24 @@ namespace Chess
 		private System.Windows.Forms.Button btnCancel;
 
 		public System.Windows.Forms.PictureBox BlackPlayerImage;
+		public System.Windows.Forms.PictureBox WhitePlayerImage;
+
 		public System.Windows.Forms.RadioButton PlayersCvC;
 		public System.Windows.Forms.RadioButton PlayersHvC;
 		public System.Windows.Forms.RadioButton PlayesrHvH;
-		public System.Windows.Forms.RadioButton PlayerLevel3;
+        public RadioButton Players960HvC;
+        //public System.Windows.Forms.RadioButton Players960HvC;
+
+        public System.Windows.Forms.RadioButton PlayerLevel3;
 		public System.Windows.Forms.RadioButton PlayerLevel2;
 		public System.Windows.Forms.RadioButton PlayerLevel1;
 		public System.Windows.Forms.TextBox BlackPlayerName;
 		public System.Windows.Forms.TextBox WhitePlayerName;
-		public System.Windows.Forms.PictureBox WhitePlayerImage;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
 		public NewGame()
 		{
@@ -74,6 +79,7 @@ namespace Chess
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewGame));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Players960HvC = new System.Windows.Forms.RadioButton();
             this.PlayersCvC = new System.Windows.Forms.RadioButton();
             this.PlayersHvC = new System.Windows.Forms.RadioButton();
             this.PlayesrHvH = new System.Windows.Forms.RadioButton();
@@ -100,19 +106,32 @@ namespace Chess
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.Players960HvC);
             this.groupBox1.Controls.Add(this.PlayersCvC);
             this.groupBox1.Controls.Add(this.PlayersHvC);
             this.groupBox1.Controls.Add(this.PlayesrHvH);
             this.groupBox1.Location = new System.Drawing.Point(24, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(160, 96);
+            this.groupBox1.Size = new System.Drawing.Size(162, 125);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Player Options";
             // 
+            // Players960HvC
+            // 
+            this.Players960HvC.AutoSize = true;
+            this.Players960HvC.Location = new System.Drawing.Point(7, 92);
+            this.Players960HvC.Name = "Players960HvC";
+            this.Players960HvC.Size = new System.Drawing.Size(157, 17);
+            this.Players960HvC.TabIndex = 3;
+            this.Players960HvC.TabStop = true;
+            this.Players960HvC.Text = "Chess960 Human Vs. Comp";
+            this.Players960HvC.UseVisualStyleBackColor = true;
+            this.Players960HvC.CheckedChanged += new System.EventHandler(this.PlayesrType_CheckedChanged);
+            // 
             // PlayersCvC
             // 
-            this.PlayersCvC.Location = new System.Drawing.Point(14, 70);
+            this.PlayersCvC.Location = new System.Drawing.Point(7, 70);
             this.PlayersCvC.Name = "PlayersCvC";
             this.PlayersCvC.Size = new System.Drawing.Size(146, 16);
             this.PlayersCvC.TabIndex = 2;
@@ -121,7 +140,7 @@ namespace Chess
             // 
             // PlayersHvC
             // 
-            this.PlayersHvC.Location = new System.Drawing.Point(14, 47);
+            this.PlayersHvC.Location = new System.Drawing.Point(7, 47);
             this.PlayersHvC.Name = "PlayersHvC";
             this.PlayersHvC.Size = new System.Drawing.Size(136, 20);
             this.PlayersHvC.TabIndex = 1;
@@ -131,7 +150,7 @@ namespace Chess
             // PlayesrHvH
             // 
             this.PlayesrHvH.Checked = true;
-            this.PlayesrHvH.Location = new System.Drawing.Point(14, 24);
+            this.PlayesrHvH.Location = new System.Drawing.Point(7, 24);
             this.PlayesrHvH.Name = "PlayesrHvH";
             this.PlayesrHvH.Size = new System.Drawing.Size(136, 20);
             this.PlayesrHvH.TabIndex = 0;
@@ -145,7 +164,7 @@ namespace Chess
             this.groupBox2.Controls.Add(this.PlayerLevel3);
             this.groupBox2.Controls.Add(this.PlayerLevel2);
             this.groupBox2.Controls.Add(this.PlayerLevel1);
-            this.groupBox2.Location = new System.Drawing.Point(24, 125);
+            this.groupBox2.Location = new System.Drawing.Point(24, 155);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(160, 91);
             this.groupBox2.TabIndex = 1;
@@ -154,7 +173,7 @@ namespace Chess
             // 
             // PlayerLevel3
             // 
-            this.PlayerLevel3.Location = new System.Drawing.Point(13, 64);
+            this.PlayerLevel3.Location = new System.Drawing.Point(7, 61);
             this.PlayerLevel3.Name = "PlayerLevel3";
             this.PlayerLevel3.Size = new System.Drawing.Size(139, 20);
             this.PlayerLevel3.TabIndex = 2;
@@ -162,7 +181,7 @@ namespace Chess
             // 
             // PlayerLevel2
             // 
-            this.PlayerLevel2.Location = new System.Drawing.Point(13, 44);
+            this.PlayerLevel2.Location = new System.Drawing.Point(7, 41);
             this.PlayerLevel2.Name = "PlayerLevel2";
             this.PlayerLevel2.Size = new System.Drawing.Size(139, 20);
             this.PlayerLevel2.TabIndex = 1;
@@ -171,7 +190,7 @@ namespace Chess
             // PlayerLevel1
             // 
             this.PlayerLevel1.Checked = true;
-            this.PlayerLevel1.Location = new System.Drawing.Point(13, 24);
+            this.PlayerLevel1.Location = new System.Drawing.Point(7, 21);
             this.PlayerLevel1.Name = "PlayerLevel1";
             this.PlayerLevel1.Size = new System.Drawing.Size(139, 20);
             this.PlayerLevel1.TabIndex = 0;
@@ -282,6 +301,7 @@ namespace Chess
             this.Text = "New Game";
             this.Load += new System.EventHandler(this.NewGame_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -324,6 +344,12 @@ namespace Chess
                 BlackPlayerImage.Image = System.Drawing.Image.FromFile(ResourceFolderPath + "laptop.jpg");
                 WhitePlayerImage.Image = System.Drawing.Image.FromFile(ResourceFolderPath + "laptop_2.png");
             }
+            else if (Players960HvC.Checked)
+            {
+                BlackPlayerImage.Image = System.Drawing.Image.FromFile(ResourceFolderPath + "laptop.jpg");
+                WhitePlayerImage.Image = System.Drawing.Image.FromFile(ResourceFolderPath + "User_2.jpg");
+            }
+
         }
 
         private void NewGame_Load(object sender, EventArgs e)
@@ -336,5 +362,6 @@ namespace Chess
         {
             (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
         }
-	}
+
+    }
 }
